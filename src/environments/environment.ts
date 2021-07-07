@@ -2,8 +2,13 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const url = "https://rickandmortyapi.com/api";
+
 export const environment = {
-  production: false
+  production: false,
+  API_character: url + '/character',
+  API_location: url + '/location',
+  API_episode: url + '/episode'
 };
 
 /*
