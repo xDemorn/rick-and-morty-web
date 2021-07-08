@@ -1,12 +1,15 @@
 <p>This is a simple web page that allows to check every <span class="special-word">character</span>, <span class="special-word">location</span> and <span class="special-word">episode</span> of Rick & Morty TV Show.</p>
-<p>It's done just for education porpose, to learn and improve my special-words in <span class="special-word">Angular</span> and <span class="special-word">JavaScript</span> / <span class="special-word">TypeScript</span></p>
+<p>It's done just for education porpose, to learn and improve my special-words in <span class="special-word">Angular</span> and <span class="special-word">JavaScript</span> / <span class="special-word">TypeScript</span>.</p>
 
-<p>Status:</p>
+<p class="status">Status:</p>
 
 <mat-list>
     <mat-list-item *ngFor="let section of sections">
         <mat-icon mat-list-icon>{{section.icon}}</mat-icon>
-        <div mat-line>{{section.name}}: <span class="special-word">{{section.count}}</span></div>
+        <div mat-line>Total number of {{section.name}}: <span class="special-word">{{section.count}}</span></div>
+        <!-- <div mat-line> -->
+            <a mat-stroked-button color="primary" href="{{section.url}}">Search {{section.name}}</a>
+        <!-- </div> -->
     </mat-list-item>
 </mat-list>
 
@@ -15,14 +18,14 @@
         <span class="special-word">&lt;&gt;</span> by Mikolaj Jaworski with <mat-icon class="special-word">favorite</mat-icon>
     </p>
     <p>
-        <a href="https://github.com/xDemorn/rick-and-morty-web" target="_blank" matTooltip="Code in GitHub" matTooltipClass="tp-big-text">
-            <img src="assets/images/logo/github.png" alt="GitHub Logo" class="logo">
+        <a mat-icon-button href="https://github.com/xDemorn/rick-and-morty-web" target="_blank" matTooltip="Code in GitHub" matTooltipClass="tp-big-text">
+            <mat-icon svgIcon="github"></mat-icon>
         </a>
-        <a href="https://www.linkedin.com/in/mikolaj-jaworski-developer" target="_blank" matTooltip="LinkedIn Profile" matTooltipClass="tp-big-text">
-            <img src="assets/images/logo/linkedin.png" alt="LinkedIn Logo" class="logo">
+        <a mat-icon-button href="https://www.linkedin.com/in/mikolaj-jaworski-developer" target="_blank" matTooltip="LinkedIn Profile" matTooltipClass="tp-big-text">
+            <mat-icon svgIcon="linkedin"></mat-icon>
         </a>
-        <a href="https://twitter.com/miki_jaworski" target="_blank" matTooltip="Twitter Profile" matTooltipClass="tp-big-text">
-            <img src="assets/images/logo/twitter.png" alt="Twitter Logo" class="logo">
+        <a mat-icon-button href="https://twitter.com/miki_jaworski" target="_blank" matTooltip="Twitter Profile" matTooltipClass="tp-big-text">
+            <mat-icon svgIcon="twitter"></mat-icon>
         </a>
     </p>
 </div>

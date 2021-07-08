@@ -1,5 +1,8 @@
 <div class="main">
   <mat-toolbar color="primary">
+    <button mat-icon-button routerLink="/">
+      <mat-icon svgIcon="rickAndMorty" class="logo"></mat-icon>
+    </button>
     <span class="spacer"></span>
     <span>Rick & Morty</span>
     <span class="spacer"></span>
@@ -7,32 +10,32 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #beforeMenu="matMenu" xPosition="before">
-      <button mat-menu-item>
+      <button mat-menu-item routerLink="/">
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </button>
-      <button mat-menu-item>
-        <mat-icon>home</mat-icon>
+      <button mat-menu-item routerLink="/character">
+        <mat-icon>face</mat-icon>
         <span>Characters</span>
       </button>
-      <button mat-menu-item>
-        <mat-icon>home</mat-icon>
+      <button mat-menu-item routerLink="/location">
+        <mat-icon>not_listed_location</mat-icon>
         <span>Locations</span>
       </button>
-      <button mat-menu-item>
-        <mat-icon>home</mat-icon>
+      <button mat-menu-item routerLink="/episode">
+        <mat-icon>dvr</mat-icon>
         <span>Episodes</span>
       </button>
-      <button mat-menu-item (click)="$event.stopPropagation()">
+      <button mat-menu-item (click)="$event.stopPropagation(); toggle.toggle();">
         <mat-icon>{{darkModeControl.value ? 'dark_mode' : 'light_mode'}}</mat-icon>
-        <mat-slide-toggle [formControl]="darkModeControl">{{darkModeControl.value ? 'Dark Mode' : 'Light Mode'}}</mat-slide-toggle>
+        <mat-slide-toggle color="primary" [formControl]="darkModeControl" #toggle>{{darkModeControl.value ? 'Dark Mode' : 'Light Mode'}}</mat-slide-toggle>
       </button>
     </mat-menu>
   </mat-toolbar>
   
   <div class="container">
-    <div class="content">
+    <!-- <div class="content"> -->
       <router-outlet></router-outlet>
-    </div>
+    <!-- </div> -->
   </div>
 </div>

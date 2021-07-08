@@ -12,7 +12,7 @@ export class HomeService {
   public GetCharacters(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient.get(environment.API_character).subscribe(data => {
-        console.log(data)
+        // console.log(data)
         resolve(data);
       }, reject);
     });
@@ -21,7 +21,7 @@ export class HomeService {
   public GetLocations(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient.get(environment.API_location).subscribe(data => {
-        console.log(data)
+        // console.log(data)
         resolve(data);
       }, reject);
     });
@@ -30,7 +30,7 @@ export class HomeService {
   public GetEpisodes(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient.get(environment.API_episode).subscribe(data => {
-        console.log(data)
+        // console.log(data)
         resolve(data);
       }, reject);
     });

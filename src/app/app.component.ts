@@ -1,6 +1,9 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +16,31 @@ export class AppComponent implements OnInit {
   
   darkModeControl: FormControl = new FormControl(false);
 
-  constructor(private overlay: OverlayContainer) { }
+  constructor(private _router: Router, private overlay: OverlayContainer, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+    // Rick and Morty logo
+    this.matIconRegistry.addSvgIcon(
+      "rickAndMorty",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/custom-icons/rick-and-morty-logo.svg")
+    );
+
+    // GitHub logo
+    this.matIconRegistry.addSvgIcon(
+      "github",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/custom-icons/github.svg")
+    );
+
+    // LinkedIn logo
+    this.matIconRegistry.addSvgIcon(
+      "linkedin",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/custom-icons/linkedin.svg")
+    );
+
+    // Twitter logo
+    this.matIconRegistry.addSvgIcon(
+      "twitter",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/custom-icons/twitter.svg")
+    );
+  }
 
   ngOnInit(): void {
 

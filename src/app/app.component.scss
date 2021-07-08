@@ -1,6 +1,7 @@
 .main {
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden; //horizontal
     
     .container {
         display: flex;
@@ -8,12 +9,16 @@
         // background-color: royalblue;
         align-items: center;
     
-        .content {
+        // .content {
             padding: 24px;
-            width: 60%;
-            display: flex;
-            justify-content: center;
+            // width: 65%;
+            // display: flex;
+            // justify-content: center;
             // background-color: red;
-        }
+        // }
     }
+}
+
+.logo {
+    transform: scale(1.5, 1.5);
 }

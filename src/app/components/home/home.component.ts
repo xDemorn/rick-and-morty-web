@@ -12,17 +12,20 @@ export class HomeComponent implements OnInit {
   sections: any[] = [
     {
       icon: 'face',
-      name: 'Total number of characters',
+      name: 'characters',
+      url: '/character',
       count: 0,
     },
     {
       icon: 'not_listed_location',
-      name: 'Total numbers of locations',
+      name: 'locations',
+      url: '/location',
       count: 0,
     },
     {
       icon: 'dvr',
-      name: 'Total numbers of episodes',
+      name: 'episodes',
+      url: '/episode',
       count: 0,
     }
   ];
