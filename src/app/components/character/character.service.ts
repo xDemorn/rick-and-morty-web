@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { Observable } from 'rxjs';
 import { Character } from 'src/app/@models/character.model';
 import { Info } from 'src/app/@models/info.model';
 import { environment } from 'src/environments/environment';
@@ -27,7 +26,7 @@ export class CharacterService implements Resolve<any> {
     this.info$ = new BehaviorSubject({});
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> {
     return new Promise<void>((resolve, reject) => {
       Promise.all([
         this.getCharacters(this.page),
