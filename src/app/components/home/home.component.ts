@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Character } from 'src/app/@models/character.model';
 import { HomeService } from './home.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { HomeService } from './home.service';
 export class HomeComponent implements OnInit {
 
   sections: any[];
+  characters: Character[];
 
   constructor(private _homeService: HomeService) {
     this.sections = [
@@ -31,13 +32,17 @@ export class HomeComponent implements OnInit {
         url: '/episode',
         count: 0,
       }
-    ]
+    ];
+
+    this.characters = [];
   }
 
   ngOnInit(): void {
     this.sections[0].count = this._homeService.infoCharacters.count;
     this.sections[1].count = this._homeService.infoLocations.count;
     this.sections[2].count = this._homeService.infoEpisodes.count;
+
+    this.characters = this._homeService.characters;
   }
 
 }

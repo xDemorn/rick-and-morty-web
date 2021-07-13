@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Character } from 'src/app/@models/character.model';
 import { Info } from 'src/app/@models/info.model';
 import { environment } from 'src/environments/environment';
 
@@ -13,10 +14,14 @@ export class HomeService implements Resolve<any> {
   infoLocations: Info;
   infoEpisodes: Info;
 
+  characters: Character[];
+
   constructor(private _httpClient: HttpClient) {
     this.infoCharacters = new Info({});
     this.infoLocations = new Info({});
     this.infoEpisodes = new Info({});
+
+    this.characters = [];
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> {
@@ -24,7 +29,8 @@ export class HomeService implements Resolve<any> {
       Promise.all([
         this.GetCharacters(),
         this.GetLocations(),
-        this.GetEpisodes()
+        this.GetEpisodes(),
+        this.GetRandomCharacters()
       ]).then(
         ([files]) => {
           resolve();
@@ -42,6 +48,27 @@ export class HomeService implements Resolve<any> {
         resolve(this.infoCharacters);
       }, reject);
     });
+  }
+
+  public GetRandomCharacters(): Promise<any> {
+    return new Promise((resolve, reject) => {
+
+      setTimeout(() => {
+        const random = `${this.GetRandom()},${this.GetRandom()},${this.GetRandom()}`;
+  
+        this._httpClient.get(environment.API_character + '/' + random).subscribe((data: any) => {
+          this.characters = data;
+          resolve(this.characters);
+        }, reject);
+
+      }, 100);
+    });
+  }
+
+  private GetRandom(): number {
+    const min = 1;
+    const max = this.infoCharacters.count;
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   public GetLocations(): Promise<any> {

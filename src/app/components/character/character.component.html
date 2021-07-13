@@ -1,37 +1,47 @@
+<form [formGroup]="form" class="filters">
+    <mat-form-field appearance="fill" class="filter">
+        <mat-label>Character name</mat-label>
+        <input matInput placeholder="Character name..." formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="filter">
+        <mat-label>Character status</mat-label>
+        <mat-select formControlName="status">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="alive">Alive</mat-option>
+            <mat-option value="dead">Dead</mat-option>
+            <mat-option value="unknown">Unknown</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="filter">
+        <mat-label>Character species</mat-label>
+        <input matInput placeholder="Character species..." formControlName="species">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="filter">
+        <mat-label>Character type</mat-label>
+        <input matInput placeholder="Character type..." formControlName="type">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="filter">
+        <mat-label>Character gender</mat-label>
+        <mat-select formControlName="gender">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="female">Female</mat-option>
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="genderless">Genderless</mat-option>
+            <mat-option value="unknown">Unknown</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="filter actions">
+        <button mat-icon-button matTooltip="Clear filters" matTooltipClass="tp-big-text" [disabled]="!isFiltering" (click)="ClearFilters()">
+            <mat-icon>clear_all</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Filter characters" matTooltipClass="tp-big-text" (click)="ApplyFilters()">
+            <mat-icon>filter_alt</mat-icon>
+        </button>
+    </div>
+</form>
 
-<div id="characters">
-    <mat-card *ngFor="let character of characters">
-        <mat-card-header>
-            <mat-card-title>{{character.name}}</mat-card-title>
-            <mat-card-subtitle>
-                <mat-icon *ngIf="character.gender == 'Male'">male</mat-icon>
-                <mat-icon *ngIf="character.gender == 'Female'">female</mat-icon>
-                <mat-icon *ngIf="character.gender == 'Genderless' || character.gender == 'unknown'">help_outline</mat-icon>
-                <span>{{character.gender}}</span>
-            </mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="{{character.image}}" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-            <div class="row">
-                <span>Status</span>
-                <div>
-                    <div class="status-icon" [ngClass]="{'alive': character.status == 'Alive', 'dead': character.status == 'Dead', 'unknown': character.status == 'unknown'}"></div>
-                    <span>{{character.status}} | {{character.species}}</span>
-                </div>
-            </div>
-            <div class="row">
-                <span>Origin location</span>
-                <span>{{character.origin.name}}</span>
-            </div>
-            <div class="row">
-                <span>Last known location</span>
-                <span>{{character.location.name}}</span>
-            </div>
-        </mat-card-content>
-        <mat-card-actions>
-          <a mat-raised-button color="accent" [routerLink]="['/character', character.id]" routerLinkActive="router-link-active" >CHECK OUT</a>
-        </mat-card-actions>
-      </mat-card>
+<div class="characters">
+    <character-model *ngFor="let character of characters" [character]="character"></character-model>
 </div>
 
 <div class="pagination">

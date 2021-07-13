@@ -18,7 +18,7 @@ export class CharacterService implements Resolve<any> {
   
   info$: BehaviorSubject<any>;
 
-  constructor(private _httpClient: HttpClient) {
+  constructor(private _httpClient: HttpClient, ) {
     this.characters = [];
     this.info = {count: 0, pages: 0, next: null, prev: null};
     this.page = 1;
@@ -39,9 +39,14 @@ export class CharacterService implements Resolve<any> {
     });
   }
 
-  public getCharacters(page: number): Promise<any> {
+  public getCharacters(page: number, filters?: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.API_character}/?page=${page}`)
+
+      if (filters == undefined && filters == null) {
+        filters = '';
+      }
+
+      this._httpClient.get(`${environment.API_character}/?page=${page}${filters}`)
           .subscribe((data: any) => {
             this.page = page;
             // console.log(data);

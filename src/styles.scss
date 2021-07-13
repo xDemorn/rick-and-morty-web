@@ -57,7 +57,7 @@ $dark-theme: mat.define-dark-theme((
 /* You can add global styles to this file, and also import other style files */
 $grid-gap: 16px;
 
-#characters {
+.characters {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: $grid-gap;
@@ -121,6 +121,34 @@ $grid-gap: 16px;
                 }
             }
         }
+    }
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    .filter {
+        flex: 1 1 auto;
+        margin-left: 8px;
+        margin-right: 8px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .actions {
+        display: flex;
+        flex: 0 1 auto;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 21.5px;
     }
 }
 

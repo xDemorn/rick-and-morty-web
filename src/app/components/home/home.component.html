@@ -13,6 +13,14 @@
     </mat-list-item>
 </mat-list>
 
+<p class="status">3 Random Characters</p>
+
+<div class="characters">
+    <ng-container *ngFor="let character of characters">
+        <character-model [character]="character"></character-model>
+    </ng-container>
+</div>
+
 <div class="footer">
     <p>
         <span class="special-word">&lt;&gt;</span> by Mikolaj Jaworski with <mat-icon class="special-word">favorite</mat-icon>
