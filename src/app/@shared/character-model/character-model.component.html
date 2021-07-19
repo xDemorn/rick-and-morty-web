@@ -14,7 +14,7 @@
             <span>Status</span>
             <div>
                 <div class="status-icon" [ngClass]="{'alive': character.status == 'Alive', 'dead': character.status == 'Dead', 'unknown': character.status == 'unknown'}"></div>
-                <span>{{character.status}} | {{character.species}}</span>
+                <span>{{character.status}} - {{character.species}}</span>
             </div>
         </div>
         <div class="row">

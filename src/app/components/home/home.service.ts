@@ -52,7 +52,6 @@ export class HomeService implements Resolve<any> {
 
   public GetRandomCharacters(): Promise<any> {
     return new Promise((resolve, reject) => {
-
       setTimeout(() => {
         const random = `${this.GetRandom()},${this.GetRandom()},${this.GetRandom()}`;
   

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { CharacterDetailComponent } from './components/character-detail/character-detail.component';
+import { CharacterDetailService } from './components/character-detail/character-detail.service';
 import { CharacterComponent } from './components/character/character.component';
 import { CharacterService } from './components/character/character.service';
 import { HomeComponent } from './components/home/home.component';
@@ -22,6 +24,14 @@ const routes: Routes = [
         service: CharacterService
     }
   },
+  {
+    path: 'character/:id',
+    // loadChildren: './components/character/character.module#CharacterModule',
+    component: CharacterDetailComponent,
+    resolve  : {
+        service: CharacterDetailService
+    }
+  },
   // {
   //   path: 'location',
   //   component: HomeComponent
@@ -33,7 +43,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

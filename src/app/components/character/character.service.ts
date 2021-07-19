@@ -57,6 +57,6 @@ export class CharacterService implements Resolve<any> {
 
             resolve({info: this.info, characters: this.characters});
           }, reject);
-    })
+    });
   }
 }

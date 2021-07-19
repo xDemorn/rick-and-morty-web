@@ -24,12 +24,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CharacterModelModule } from './@shared';
+import { CharacterDetailComponent } from './components/character-detail/character-detail.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { EpisodeModelModule } from './@shared/episode-model/episode-model.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CharacterComponent
+    CharacterComponent,
+    CharacterDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -48,8 +52,10 @@ import { CharacterModelModule } from './@shared';
     ReactiveFormsModule,
     MatListModule,
     MatTooltipModule,
+    MatSnackBarModule,
 
-    CharacterModelModule
+    CharacterModelModule,
+    EpisodeModelModule
   ],
   bootstrap: [AppComponent]
 })

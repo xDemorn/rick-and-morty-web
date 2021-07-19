@@ -1,0 +1,44 @@
+<div id="character">
+
+    <p class="section">Basic Information</p>
+
+    <div class="info">
+        <img src="{{character.image}}" alt="">
+        <div>
+            <p class="name">{{character.name}}</p>
+            <div class="row-container">
+                <div class="status-icon" [ngClass]="{'alive': character.status == 'Alive', 'dead': character.status == 'Dead', 'unknown': character.status == 'unknown'}"></div>
+                <span>{{character.status}} - {{character.species}}</span>
+            </div>
+            <div class="row-container">
+                <mat-icon *ngIf="character.gender == 'Male'">male</mat-icon>
+                <mat-icon *ngIf="character.gender == 'Female'">female</mat-icon>
+                <mat-icon *ngIf="character.gender == 'Genderless' || character.gender == 'unknown'">help_outline</mat-icon>
+                <span>{{character.gender}}</span>
+            </div>
+            <div class="row-container">
+                <div class="column">
+                    <p>Origin</p>
+                    <p>{{character.origin.name}}</p>
+                    <a mat-raised-button color="accent" [routerLink]="[character.origin.url]" routerLinkActive="router-link-active" >CHECK OUT LOCATION</a>
+                </div>
+                <div class="column">
+                    <p>Origin</p>
+                    <p>{{character.location.name}}</p>
+                    <a mat-raised-button color="accent" [routerLink]="character.location.url" routerLinkActive="router-link-active" >CHECK OUT LOCATION</a>
+                </div>
+            </div>
+            <div class="row-container">
+                <a mat-raised-button color="accent" [routerLink]="['/character']" routerLinkActive="router-link-active" >SEE ALL CHARACTERS</a>
+            </div>
+        </div>
+    </div>
+
+    <p class="section">List of Episodes</p>
+
+    <div class="episodes">
+        <episode-model *ngFor="let episode of episodes" [episode]="episode"></episode-model>
+    </div>
+    
+    <button mat-stroked-button *ngIf="!loadedEpisodes" (click)="loadEpisodes()">LOAD EPISODES</button>
+</div>

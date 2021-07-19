@@ -57,12 +57,13 @@ $dark-theme: mat.define-dark-theme((
 /* You can add global styles to this file, and also import other style files */
 $grid-gap: 16px;
 
-.characters {
+.characters, .episodes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: $grid-gap;
     column-gap: $grid-gap;
     width: 100%;
+    padding: 12px;
     // background-color: red;
 
     mat-card {
@@ -99,29 +100,29 @@ $grid-gap: 16px;
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-
-                    .status-icon {
-                        height: 16px;
-                        width: 16px;
-                        border-radius: 50%;
-                        margin-right: 8px;
-                    }
-
-                    .alive {
-                        background-color: green;
-                    }
-
-                    .dead {
-                        background-color: red;
-                    }
-
-                    .unknown {
-                        background-color: grey;
-                    }
                 }
             }
         }
     }
+}
+
+.status-icon {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.alive {
+    background-color: green;
+}
+
+.dead {
+    background-color: red;
+}
+
+.unknown {
+    background-color: grey;
 }
 
 .filters {

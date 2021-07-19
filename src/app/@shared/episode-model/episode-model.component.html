@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{episode.episode}} - {{episode.name}}</mat-card-title>
+        <mat-card-subtitle>Aired on {{episode.air_date}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>{{episode.characters.length}} showed in this episode.</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-raised-button color="accent" [routerLink]="['/episode', episode.id]" routerLinkActive="router-link-active" >CHECK OUT</a>
+    </mat-card-actions>
+</mat-card>
