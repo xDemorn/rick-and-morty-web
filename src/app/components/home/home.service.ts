@@ -60,7 +60,7 @@ export class HomeService implements Resolve<any> {
           resolve(this.characters);
         }, reject);
 
-      }, 100);
+      }, 500);
     });
   }
 

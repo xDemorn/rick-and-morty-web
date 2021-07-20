@@ -23,8 +23,7 @@ export class CharacterDetailService implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> {
     return new Promise<void>((resolve, reject) => {
       Promise.all([
-        this.getCharacter(route.params.id),
-        // this.getEpisode()
+        this.getCharacter(route.params.id)
       ]).then(
         ([files]) => {
           resolve();
@@ -39,7 +38,6 @@ export class CharacterDetailService implements Resolve<any> {
       this._httpClient.get(`${environment.API_character}/${id}`)
           .subscribe((data: any) => {
             this.character = new Character(data);
-            console.log(this.character);
             this.numEpisodes = this.character.episode.length;
             resolve(this.character);
           }, reject);
@@ -52,7 +50,6 @@ export class CharacterDetailService implements Resolve<any> {
         console.log('getting episode info')
         this._httpClient.get(this.character.episode[this.episodes.length]).subscribe((data: any) => {
           resolve(data);
-          console.log(new Episode(data))
           this.episodes.push(new Episode(data));
           
           if (this.episodes.length != this.numEpisodes) {
@@ -64,7 +61,7 @@ export class CharacterDetailService implements Resolve<any> {
           }
           
         }, reject);
-      }, 750);
+      }, 350);
     });
   }
 }

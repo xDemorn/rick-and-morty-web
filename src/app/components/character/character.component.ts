@@ -79,8 +79,6 @@ export class CharacterComponent implements OnInit {
       this.isFiltering = true;
       this._characterService.getCharacters(1, this.filters);
     }
-
-    console.log(this.filters)
   }
 
   public ClearFilters(): void {

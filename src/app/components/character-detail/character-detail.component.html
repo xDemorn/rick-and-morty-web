@@ -20,12 +20,12 @@
                 <div class="column">
                     <p>Origin</p>
                     <p>{{character.origin.name}}</p>
-                    <a mat-raised-button color="accent" [routerLink]="[character.origin.url]" routerLinkActive="router-link-active" >CHECK OUT LOCATION</a>
+                    <a mat-raised-button color="accent" [routerLink]="['/location', location1]" routerLinkActive="router-link-active" >CHECK OUT LOCATION</a>
                 </div>
                 <div class="column">
                     <p>Origin</p>
                     <p>{{character.location.name}}</p>
-                    <a mat-raised-button color="accent" [routerLink]="character.location.url" routerLinkActive="router-link-active" >CHECK OUT LOCATION</a>
+                    <a mat-raised-button color="accent" [routerLink]="['/location', location2]" routerLinkActive="router-link-active" >CHECK OUT LOCATION</a>
                 </div>
             </div>
             <div class="row-container">
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <p class="section">List of Episodes</p>
+    <p class="section">List of Episodes ({{character.episode.length}})</p>
 
     <div class="episodes">
         <episode-model *ngFor="let episode of episodes" [episode]="episode"></episode-model>

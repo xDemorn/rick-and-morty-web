@@ -13,6 +13,9 @@ export class CharacterDetailComponent implements OnInit {
   character!: Character;
   episodes!: Episode[];
   
+  location1!: number;
+  location2!: number;
+  
   loadedEpisodes: boolean = false;
 
   constructor(private _characterService: CharacterDetailService) { }
@@ -20,6 +23,12 @@ export class CharacterDetailComponent implements OnInit {
   ngOnInit(): void {
     this.character = this._characterService.character;
     this.episodes = this._characterService.episodes;
+    
+    let split: string[] = this.character.origin.url.split('/');
+    this.location1 = Number(split[split.length - 1]);
+    
+    split = this.character.location.url.split('/');
+    this.location2 = Number(split[split.length - 1]);
   }
   
   public loadEpisodes(): void {
