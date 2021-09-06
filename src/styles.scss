@@ -57,7 +57,7 @@ $dark-theme: mat.define-dark-theme((
 /* You can add global styles to this file, and also import other style files */
 $grid-gap: 16px;
 
-.characters, .episodes {
+.characters, .episodes, .locations {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: $grid-gap;

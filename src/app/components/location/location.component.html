@@ -1,0 +1,59 @@
+<form [formGroup]="form" class="filters">
+    <mat-form-field appearance="fill" class="filter">
+        <mat-label>Character name</mat-label>
+        <input matInput placeholder="Character name..." formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="filter">
+        <mat-label>Character status</mat-label>
+        <mat-select formControlName="status">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="alive">Alive</mat-option>
+            <mat-option value="dead">Dead</mat-option>
+            <mat-option value="unknown">Unknown</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="filter">
+        <mat-label>Character species</mat-label>
+        <input matInput placeholder="Character species..." formControlName="species">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="filter">
+        <mat-label>Character type</mat-label>
+        <input matInput placeholder="Character type..." formControlName="type">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="filter">
+        <mat-label>Character gender</mat-label>
+        <mat-select formControlName="gender">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="female">Female</mat-option>
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="genderless">Genderless</mat-option>
+            <mat-option value="unknown">Unknown</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="filter actions">
+        <button mat-icon-button matTooltip="Clear filters" matTooltipClass="tp-big-text" [disabled]="!isFiltering" (click)="ClearFilters()">
+            <mat-icon>clear_all</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Filter characters" matTooltipClass="tp-big-text" (click)="ApplyFilters()">
+            <mat-icon>filter_alt</mat-icon>
+        </button>
+    </div>
+</form>
+
+<div class="locations">
+    <location-model *ngFor="let location of locations" [location]="location"></location-model>
+</div>
+
+<div class="pagination">
+
+    <button mat-stroked-button matTooltip="Previous page" matTooltipClass="tp-big-text" (click)="prevPage()" [disabled]="info?.prev == null">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+
+    <p class="middle">{{page}} / {{info?.pages}}</p>
+
+    <button mat-stroked-button matTooltip="Next page" matTooltipClass="tp-big-text" (click)="nextPage()" [disabled]="info?.next == null">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+
+</div>

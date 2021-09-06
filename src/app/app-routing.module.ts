@@ -6,6 +6,10 @@ import { CharacterComponent } from './components/character/character.component';
 import { CharacterService } from './components/character/character.service';
 import { HomeComponent } from './components/home/home.component';
 import { HomeService } from './components/home/home.service';
+import {LocationComponent} from "./components/location/location.component";
+import {EpisodeComponent} from "./components/episode/episode.component";
+import {EpisodeService} from "./components/episode/episode.service";
+import {LocationService} from "./components/location/location.service";
 
 const routes: Routes = [
   {
@@ -32,14 +36,20 @@ const routes: Routes = [
         service: CharacterDetailService
     }
   },
-  // {
-  //   path: 'location',
-  //   component: HomeComponent
-  // },
-  // {
-  //   path: 'episode',
-  //   component: HomeComponent
-  // }
+  {
+    path: 'location',
+    component: LocationComponent,
+    resolve  : {
+      service: LocationService
+    }
+  },
+  {
+    path: 'episode',
+    component: EpisodeComponent,
+    resolve  : {
+      service: EpisodeService
+    }
+  }
 ];
 
 @NgModule({

@@ -27,13 +27,19 @@ import { CharacterModelModule } from './@shared';
 import { CharacterDetailComponent } from './components/character-detail/character-detail.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { EpisodeModelModule } from './@shared/episode-model/episode-model.module';
+import { LocationComponent } from './components/location/location.component';
+import { EpisodeComponent } from './components/episode/episode.component';
+import { LocationModelComponent } from './@shared/location-model/location-model.component';
+import {LocationModelModule} from "./@shared/location-model/location-model.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CharacterComponent,
-    CharacterDetailComponent
+    CharacterDetailComponent,
+    LocationComponent,
+    EpisodeComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +61,8 @@ import { EpisodeModelModule } from './@shared/episode-model/episode-model.module
     MatSnackBarModule,
 
     CharacterModelModule,
-    EpisodeModelModule
+    EpisodeModelModule,
+    LocationModelModule
   ],
   bootstrap: [AppComponent]
 })
