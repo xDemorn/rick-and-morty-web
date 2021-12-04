@@ -41,8 +41,12 @@ export class HomeComponent implements OnInit {
     this.sections[0].count = this._homeService.infoCharacters.count;
     this.sections[1].count = this._homeService.infoLocations.count;
     this.sections[2].count = this._homeService.infoEpisodes.count;
+  }
 
-    this.characters = this._homeService.characters;
+  loadRandomCharacters(): void {
+    this._homeService.GetRandomCharacters().then((data: Character[]) => {
+      this.characters = data;
+    })
   }
 
 }

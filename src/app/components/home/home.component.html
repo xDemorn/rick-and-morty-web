@@ -1,5 +1,5 @@
 <p>This is a simple web page that allows to check every <span class="special-word">character</span>, <span class="special-word">location</span> and <span class="special-word">episode</span> of Rick & Morty TV Show.</p>
-<p>It's done just for education porpose, to learn and improve my special-words in <span class="special-word">Angular</span> and <span class="special-word">JavaScript</span> / <span class="special-word">TypeScript</span>.</p>
+<p>It's done just for education porpose, to learn and improve my skills in <span class="special-word">Angular</span> and <span class="special-word">JavaScript</span> / <span class="special-word">TypeScript</span>.</p>
 
 <p class="status">Status:</p>
 
@@ -8,12 +8,18 @@
         <mat-icon mat-list-icon>{{section.icon}}</mat-icon>
         <div mat-line>Total number of {{section.name}}: <span class="special-word">{{section.count}}</span></div>
         <!-- <div mat-line> -->
-            <a mat-stroked-button color="primary" href="{{section.url}}">Search {{section.name}}</a>
+            <a mat-stroked-button color="primary" href="{{section.url}}">Search all {{section.name}}</a>
         <!-- </div> -->
     </mat-list-item>
 </mat-list>
 
-<p class="status">3 Random Characters</p>
+<div class="container">
+
+    <p class="status">3 Random Characters</p>
+    
+    <button mat-raised-button (click)="loadRandomCharacters()" color="primary">Load 3 random characters</button>
+
+</div>
 
 <div class="characters">
     <ng-container *ngFor="let character of characters">

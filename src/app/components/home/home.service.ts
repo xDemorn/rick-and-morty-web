@@ -14,14 +14,10 @@ export class HomeService implements Resolve<any> {
   infoLocations: Info;
   infoEpisodes: Info;
 
-  characters: Character[];
-
   constructor(private _httpClient: HttpClient) {
     this.infoCharacters = new Info({});
     this.infoLocations = new Info({});
     this.infoEpisodes = new Info({});
-
-    this.characters = [];
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> {
@@ -29,8 +25,7 @@ export class HomeService implements Resolve<any> {
       Promise.all([
         this.GetCharacters(),
         this.GetLocations(),
-        this.GetEpisodes(),
-        this.GetRandomCharacters()
+        this.GetEpisodes()
       ]).then(
         ([files]) => {
           resolve();
@@ -43,31 +38,19 @@ export class HomeService implements Resolve<any> {
   public GetCharacters(): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient.get(environment.API_character).subscribe((data: any) => {
-        // console.log(data)
         this.infoCharacters = data.info;
         resolve(this.infoCharacters);
       }, reject);
     });
   }
 
-  public GetRandomCharacters(): Promise<any> {
+  public GetRandomCharacters(): Promise<Character[]> {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const random = `${this.GetRandom()},${this.GetRandom()},${this.GetRandom()}`;
-  
-        this._httpClient.get(environment.API_character + '/' + random).subscribe((data: any) => {
-          this.characters = data;
-          resolve(this.characters);
-        }, reject);
-
-      }, 500);
+      const random = `${this.GetRandom()},${this.GetRandom()},${this.GetRandom()}`;
+      this._httpClient.get(environment.API_character + '/' + random).subscribe((data: any) => {
+        resolve(data);
+      }, reject);
     });
-  }
-
-  private GetRandom(): number {
-    const min = 1;
-    const max = this.infoCharacters.count;
-    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   public GetLocations(): Promise<any> {
@@ -88,5 +71,11 @@ export class HomeService implements Resolve<any> {
         resolve(this.infoEpisodes);
       }, reject);
     });
+  }
+
+  private GetRandom(): number {
+    const min = 1;
+    const max = this.infoCharacters.count;
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 }
